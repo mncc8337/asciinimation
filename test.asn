@@ -1,24 +1,37 @@
-# basic infomation
+DEF_SCENE opening
+DEF_SCENE body
+DEF_SCENE closing
+# -----------------------------
+
+MOD_SCENE opening
+DIMENSION 10 6
+FPS 1
+FRAMES 1
+IGNORE = '~'
+
+FRAME 0
+HIHIHIHIHIHIHIHI
+END
+
+DONE_MOD
+
+# -----------------------------
+MOD_SCENE body
 DIMENSION 10 6
 FPS 2
-FRAMES 9
+FRAMES 7
 IGNORE '~'
 
-# frame num start from 0
-# blank frame
 FRAME 0
++--------+
+|~~~~~~~~|
+|~~~~~~~~|
+|~~~~~~~~|
+|~~~~~~~~|
++--------+
 END
 
 FRAME 1
-+--------+
-|~~~~~~~~|
-|~~~~~~~~|
-|~~~~~~~~|
-|~~~~~~~~|
-+--------+
-END
-
-FRAME 2
 ~~~~~~~~~~
 ~~~~~~~~~~
 ~~~~~~~~~~
@@ -27,7 +40,7 @@ FRAME 2
 ~~~~~~~~~~
 END
 
-FRAME 3
+FRAME 2
 ~~~~~~~~~~
 ~~~~~~~~~~
 ~~~~~~~~~~
@@ -36,7 +49,7 @@ FRAME 3
 ~~~~~~~~~~
 END
 
-FRAME 4
+FRAME 3
 ~~~~~~~~~~
 ~~~~~~~~~~
 ~~~~~~~~~~
@@ -45,7 +58,7 @@ FRAME 4
 ~~~~~~~~~~
 END
 
-FRAME 5
+FRAME 4
 ~~~~~~~~~~
 ~~~~~~~~~~
 ~~~~~~~~~~
@@ -54,7 +67,7 @@ FRAME 5
 ~~~~~~~~~~
 END
 
-FRAME 6
+FRAME 5
 ~~~~~~~~~~
 ~~~~~~~~~~
 ~~~~~~~~~~
@@ -63,7 +76,7 @@ FRAME 6
 ~~~~~~~~~~
 END
 
-FRAME 7
+FRAME 6
 ~~~~~~~~~~
 ~~~~~~~~~~
 ~~~~~~~~~~
@@ -72,5 +85,29 @@ FRAME 7
 ~~~~~~~~~~
 END
 
-FRAME 8
+DONE_MOD
+# ---------------------------------------
+
+MOD_SCENE closing
+DIMENSION 10 6
+FPS 1
+FRAMES 1
+IGNORE '~'
+
+FRAME 0
+----------
+----------
+----BYE---
+----------
+----------
+----------
+END
+
+DONE_MOD
+# --------------------------------------------
+
+INSTRUCTION
+PLAY opening
+REP body 3
+PLAY closing
 END

@@ -1,5 +1,5 @@
-#ifndef ANIM_H
-#define ANIM_H
+#ifndef SCENE_H
+#define SCENE_H
 
 #include <vector>
 #include <chrono>
@@ -7,17 +7,37 @@
 
 using std::vector;
 
-class Anim {
+class Scene {
 private:
     int mspf;
-    vector<Frame> frames;
-    char empty_char;
 public:
+    bool fps_defined = false;
+    bool dim_defined = false;
+    bool empty_char_defined = false;
+    bool frame_count_defined = false;
+
+    int width, height;
+    int frame_count = -1;
+    char empty_char;
+    vector<Frame> frames;
+
+    void set_dim(int w, int h) {
+        width = w;
+        height = h;
+        dim_defined = true;
+    }
     void set_fps(int fps) {
         mspf = 1.0 / fps * 1000.0 + 0.5;
+        fps_defined = true;
     }
     void set_empty_char(char chr) {
         empty_char = chr;
+        empty_char_defined = true;
+    }
+    void set_frame_count(int cnt) {
+        frames = vector<Frame>(cnt, Frame(width, height));
+        frame_count = cnt;
+        frame_count_defined = true;
     }
     void add_frame(Frame f) {
         frames.push_back(f);

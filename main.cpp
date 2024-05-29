@@ -11,13 +11,13 @@ using std::to_string;
 #include <iostream>
 using std::cout;
 
-#include "reader.h"
+#include "compiler.h"
 
 void sleep(int ms);
 void draw_word_at(string word, int x, int y);
 void myrefresh();
 
-Anim animation;
+Instructor ins;
 
 int main(int argc, char** argv) {
     if(argc < 2) {
@@ -26,17 +26,19 @@ int main(int argc, char** argv) {
     }
 
     int error_line;
-    int err = read_file(string(argv[1]), animation, error_line);
+    int err = compile_file(string(argv[1]), ins, error_line);
     if(err != GOOD) {
         cout << "error on line " << error_line << '\n';
         cout << reading_error_match(err) << '\n';
         return 1;
     }
 
+    ins.set_play_func_params(draw_word_at, myrefresh, sleep);
+
     initscr();
     curs_set(0);
 
-    animation.play(draw_word_at, myrefresh, sleep);
+    ins.do_it();
 
     endwin();
     return 0;
