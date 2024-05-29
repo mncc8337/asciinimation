@@ -13,12 +13,17 @@ private:
     vector<Frame> frames;
     char empty_char;
 public:
-    Anim(int _fps, char _empty_char) {
-        mspf = 1.0 / _fps * 1000.0 + 0.5;
-        empty_char = _empty_char;
+    void set_fps(int fps) {
+        mspf = 1.0 / fps * 1000.0 + 0.5;
+    }
+    void set_empty_char(char chr) {
+        empty_char = chr;
     }
     void add_frame(Frame f) {
         frames.push_back(f);
+    }
+    void clear_frames() {
+        frames.clear();
     }
     void play(void (*draw_word_at)(string, int, int),
               void (*refresh)(void),
